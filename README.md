@@ -64,14 +64,78 @@ QueryCraft is a modern, professional SQL query builder and database management p
 | **Icons** | Lucide React |
 | **Build** | Vite with TypeScript |
 
-## � Prerequisites
+## � Project Structure
 
-Before installing QueryCraft, ensure you have:
+```
+QueryCraft/
+├── 📄 README.md                    # Project documentation
+├── 📄 LICENSE                      # MIT License
+├── 📄 CONTRIBUTING.md              # Development guidelines
+├── 📄 CHANGELOG.md                 # Version history
+├── 📄 package.json                 # Workspace configuration
+├── ⚙️  vercel.json                 # Vercel deployment config
+│
+├── 📁 frontend/                    # React frontend application
+│   ├── 📄 .env                     # Environment variables
+│   ├── 📄 .env.example             # Environment template
+│   ├── 📄 README.md                # Frontend-specific guide
+│   ├── 📁 public/                  # Static assets
+│   │   ├── 📄 _redirects           # SPA routing
+│   │   └── 📄 favicon.svg          # App icon
+│   └── 📁 src/                     # Source code
+│       ├── 📁 components/          # Reusable components
+│       ├── 📁 pages/               # Route-level pages
+│       ├── 📁 stores/              # State management
+│       ├── 📁 types/               # TypeScript definitions
+│       └── 📁 utils/               # Helper functions
+│
+└── 📁 backend/                     # Supabase backend
+    ├── 📄 package.json             # Backend dependencies
+    └── 📁 supabase/                # Supabase configuration
+        ├── 📁 functions/           # Edge functions
+        └── 📁 migrations/          # Database migrations
+```
 
+## 📚 Additional Documentation
+
+| Document | Description |
+|----------|-------------|
+| [🤝 Contributing Guide](CONTRIBUTING.md) | How to contribute to QueryCraft development |
+| [📋 Changelog](CHANGELOG.md) | Version history and release notes |
+| [⚖️ License](LICENSE) | MIT License terms |
+| [💻 Frontend Documentation](frontend/README.md) | Frontend-specific development guide |
+
+## 🚀 Quick Start
+
+### Prerequisites
 - **Node.js** v18 or higher
-- **npm** v9 or higher
+- **npm** v9 or higher  
 - **Supabase Account** (free tier available)
-- **Git** for version control
+
+### Installation
+```bash
+# Clone and install
+git clone https://github.com/yourusername/querycraft.git
+cd querycraft
+npm run install:all
+
+# Configure environment
+cd frontend  
+cp .env.example .env
+# Edit .env with your Supabase credentials
+
+# Start development server
+npm run dev
+```
+
+### Environment Configuration
+Copy [`frontend/.env.example`](frontend/.env.example) to `frontend/.env` and configure:
+
+```env
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_ENCRYPTION_KEY=your-32-character-key
+```
 
 ## 🛠️ Installation & Setup
 
@@ -151,26 +215,36 @@ npm run dev
 
 ## 🚀 Deployment
 
-### Frontend Deployment (Vercel/Netlify)
+### Quick Deploy to Vercel
 
-#### Vercel (Recommended)
+1. **Push to GitHub** (if not already done)
+2. **Connect to Vercel**: 
+   - Visit [vercel.com](https://vercel.com) 
+   - Import your GitHub repository
+   - Vercel auto-detects the React app
+3. **Set Environment Variables** in Vercel dashboard:
+   ```env
+   VITE_SUPABASE_URL=https://your-project.supabase.co
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   VITE_ENCRYPTION_KEY=your-32-character-key
+   ```
+4. **Deploy** - Should work without 404 errors (thanks to `vercel.json`)
+
+### Backend Deployment (Supabase)
+
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel --prod
+cd backend
+supabase login
+supabase link --project-ref your-project-id
+supabase db push
+supabase functions deploy
 ```
 
-#### Environment Variables
-Set these in your deployment platform:
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
-- `VITE_ENCRYPTION_KEY`
-- `VITE_APP_NAME`
+### Troubleshooting
 
-### Backend Deployment
-Edge functions are automatically deployed to Supabase when you run the deploy commands above.
+**404 Errors on Routes**: Fixed by `vercel.json` SPA configuration  
+**Build Failures**: Ensure Node.js 18+ and proper environment variables  
+**Auth Issues**: Verify Supabase URL and anon key are correct
 
 ## 🎨 Application Structure
 
@@ -315,6 +389,66 @@ QueryCraft supports all modern browsers:
 - **Largest Contentful Paint:** < 2.5s
 - **Time to Interactive:** < 3.8s
 - **Cumulative Layout Shift:** < 0.1
+
+## 📄 License
+
+## 🚀 Deployment
+
+### Frontend Deployment (SPA Configuration Required)
+
+QueryCraft uses React Router for client-side routing, which requires proper SPA configuration on your hosting platform:
+
+#### **Vercel**
+- The `vercel.json` file is already configured
+- Set environment variables in your Vercel dashboard
+
+#### **Netlify**  
+- The `_redirects` file and `netlify.toml` are already configured
+- Deploy from the root directory
+- Set environment variables in Netlify dashboard
+
+#### **Other Platforms**
+Configure your platform to:
+1. Build from the `frontend` directory using `npm run build`
+2. Serve the `frontend/dist` folder
+3. Redirect all routes to `index.html` (SPA fallback)
+
+### Backend Deployment (Supabase)
+
+1. **Set up Supabase project:**
+   ```bash
+   cd backend
+   supabase login
+   supabase link --project-ref your-project-id
+   ```
+
+2. **Deploy database migrations:**
+   ```bash
+   supabase db push
+   ```
+
+3. **Deploy edge functions:**
+   ```bash
+   supabase functions deploy
+   ```
+
+### Environment Variables
+
+Set these variables in your deployment platform:
+
+```env
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_ENCRYPTION_KEY=your-32-character-key
+```
+
+### Troubleshooting Deployment
+
+**404 Errors**: Ensure SPA routing is properly configured (see configurations above)
+
+**Missing Environment Variables**: Check that all required environment variables are set in your deployment platform
+
+**Build Failures**: Make sure Node.js version is 18+ and all dependencies are installed
 
 ## 📄 License
 

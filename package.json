@@ -1,0 +1,35 @@
+{
+  "name": "querycraft",
+  "version": "1.0.0",
+  "description": "Visual SQL Query Builder & Database Management Platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "preview": "npm run preview --workspace=frontend",
+    "deploy:frontend": "npm run build --workspace=frontend",
+    "deploy:backend": "npm run deploy --workspace=backend",
+    "deploy:all": "npm run deploy:frontend && npm run deploy:backend",
+    "install:all": "npm install --workspace=frontend && npm install --workspace=backend",
+    "clean": "rm -rf frontend/dist backend/.supabase",
+    "lint": "npm run lint --workspace=frontend"
+  },
+  "keywords": [
+    "sql",
+    "query-builder",
+    "database",
+    "react",
+    "supabase",
+    "typescript"
+  ],
+  "author": "QueryCraft Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
