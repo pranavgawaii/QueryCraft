@@ -116,7 +116,7 @@ export const LoginForm = () => {
             </div>
           </div>
 
-          <Button className="w-full" type="button" variant="secondary" onClick={onDemoLogin}>
+          <Button className="w-full" type="button" variant="outline" onClick={onDemoLogin}>
             <User className="mr-2 h-4 w-4" />
             Try Demo Account
           </Button>

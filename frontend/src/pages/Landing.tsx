@@ -12,10 +12,7 @@ const sqlQueries = [
   "SELECT product, SUM(quantity) FROM sales GROUP BY product",
 ];
 
-const sqlKeywords = [
-  "SELECT", "FROM", "WHERE", "JOIN", "GROUP BY", "ORDER BY", "INSERT", "UPDATE", 
-  "DELETE", "CREATE", "ALTER", "DROP", "INDEX", "VIEW", "UNION", "HAVING"
-];
+
 
 export const Landing = () => {
   const [currentQuery, setCurrentQuery] = useState(0);
