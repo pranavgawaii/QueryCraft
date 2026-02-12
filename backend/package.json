@@ -1,0 +1,33 @@
+{
+  "name": "querycraft-backend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "QueryCraft Backend - Supabase Edge Functions",
+  "type": "module",
+  "scripts": {
+    "deploy": "supabase functions deploy",
+    "deploy:execute-query": "supabase functions deploy execute-query",
+    "deploy:fetch-schema": "supabase functions deploy fetch-schema",
+    "deploy:test-connection": "supabase functions deploy test-connection",
+    "serve": "supabase functions serve",
+    "migrate": "supabase db reset",
+    "link": "supabase link",
+    "login": "supabase login",
+    "status": "supabase status"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  },
+  "keywords": [
+    "supabase",
+    "edge-functions",
+    "serverless",
+    "database"
+  ],
+  "author": "QueryCraft Team",
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#262626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Squircle background -->
+  <path d="M 20,0 L 80,0 C 93.807,0 100,6.193 100,20 L 100,80 C 100,93.807 93.807,100 80,100 L 20,100 C 6.193,100 0,93.807 0,80 L 0,20 C 0,6.193 6.193,0 20,0 Z" fill="url(#grad)"/>
+  
+  <!-- Database icon centered with padding -->
+  <g transform="translate(50, 50)">
+    <ellipse cx="0" cy="-15" rx="20" ry="6" fill="none" stroke="white" stroke-width="3"/>
+    <path d="M -20,-15 L -20,15 C -20,18.314 -11.046,21 0,21 C 11.046,21 20,18.314 20,15 L 20,-15" fill="none" stroke="white" stroke-width="3"/>
+    <path d="M -20,0 C -20,3.314 -11.046,6 0,6 C 11.046,6 20,3.314 20,0" fill="none" stroke="white" stroke-width="3"/>
+  </g>
+</svg>
